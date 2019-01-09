@@ -1,5 +1,5 @@
 const flock = [];
-let visualize = false
+let visualize = true
 
 let alignSlider, cohesionSlider, separationSlider;
 let quadTree;
@@ -26,9 +26,9 @@ function draw() {
 		}
 	}
 	background(color(0, 0, 0, 15))
-
-	quadTree = new QuadTree(new Rectangle(0, 0, width, height))
-	quadTree.visualize = visualize
+	var bound = new Rectangle(0, 0, width, height)
+	bound.visualize = visualize
+	quadTree = new QuadTree(bound)
 	quadTree.insertRange(flock)
 	for (let boid of flock) {
 		c = new Circle(boid.position.x, boid.position.y, 100)

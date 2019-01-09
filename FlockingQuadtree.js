@@ -97,10 +97,10 @@ class QuadTree {
 		this.southWest = null;
 		this.southEast = null;
 		this.divided = false;
-		//if (this.visualize) {
-			
-		//}
-		this.boundary.show()
+		if (this.boundary.visualize) {
+			this.boundary.show()
+		}
+		
 	}
 
 	insert(boid) {
@@ -134,17 +134,17 @@ class QuadTree {
 		let h = this.boundary.h / 2;
 
 		let nw = new Rectangle(x - w, y - h, w, h);
+		nw.visualize = this.boundary.visualize
 		this.northWest = new QuadTree(nw);
-		this.northWest.visualize = this.visualize
 		let ne = new Rectangle(x + w, y - h, w, h);
+		ne.visualize = this.boundary.visualize
 		this.northEast = new QuadTree(ne);
-		this.northEast.visualize = this.visualize
 		let sw = new Rectangle(x - w, y + h, w, h);
+		sw.visualize = this.boundary.visualize
 		this.southWest = new QuadTree(sw);
-		this.southWest.visualize = this.visualize
 		let se = new Rectangle(x + w, y + h, w, h);
+		se.visualize = this.boundary.visualize
 		this.southEast = new QuadTree(se);
-		this.southEast.visualize = this.visualize
 
 		this.divided = true;
 	}
